@@ -48,6 +48,9 @@
   height: 100%;
 
   background: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
@@ -55,13 +58,19 @@
   pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 528px;
   height: 581px;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   display: flex;
   justify-content: end;
@@ -109,10 +118,6 @@ body {
 
   background-color: var(--primary-white-color);
 }
-
-/* * {
-  outline: 1px solid tomato;
-} */
 
 /* Шапка сайта */
 
@@ -164,6 +169,8 @@ body {
   text-decoration: none;
 
   color: var(--primary-text-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-nav:hover,
@@ -210,6 +217,8 @@ body {
 
   color: var(--secondary-text-color);
   fill: var(--secondary-text-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-cont-mail:hover,
@@ -285,6 +294,8 @@ body {
 
   background-color: var(--accent-text-color);
   color: var(--primary-white-color);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover {
@@ -476,6 +487,8 @@ body {
   border-radius: 50%;
   width: 44px;
   height: 44px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-team:hover,
@@ -556,29 +569,34 @@ body {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.projects-thumb::before {
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(33, 150, 243, 0.9);
-  opacity: 0;
-}
-
 .projects-link:hover .projects-thumb::before {
-  opacity: 1;
-}
-
-.projects-link:hover .hover-card-text {
-  opacity: 1;
+  transform: translateY(0);
 }
 
 .projects-thumb {
   position: relative;
+  overflow: hidden;
 }
 
 .projects-photo {
   display: block;
+}
+
+.projects-overlay {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-link:hover .projects-overlay {
+  transform: translateY(0);
 }
 
 .hover-card-text {
@@ -586,9 +604,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
   width: 322px;
+
   opacity: 0;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-link:hover .hover-card-text {
+  opacity: 1;
 }
 
 .card-desc {
@@ -656,6 +680,7 @@ body {
   width: 170px;
   height: 92px;
   fill: var(--primary-company-color);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
@@ -778,6 +803,8 @@ body {
   width: 44px;
   height: 44px;
   background-color: var(--primary-bg-social);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-footer:hover,
